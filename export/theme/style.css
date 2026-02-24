@@ -1,33 +1,64 @@
 @charset "UTF-8";
 @font-face {
-    font-family: "Open Sans";
+    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
-    src: local("Open Sans"), local("OpenSans"),
-        url(fonts/open-sans.woff2) format("woff2"),
-        url(fonts/open-sans.woff) format("woff");
+    src: local("Inter"), url(fonts/Inter-Regular.woff2) format("woff2"),
+        url(fonts/Inter-Regular.woff) format("woff");
 }
+
 @font-face {
-    font-family: "Open Sans";
+    font-family: "Inter";
+    font-style: italic;
+    font-weight: 400;
+    src: local("Inter Italic"), url(fonts/Inter-Italic.woff2) format("woff2"),
+        url(fonts/Inter-Italic.woff) format("woff");
+}
+
+@font-face {
+    font-family: "Inter";
     font-style: normal;
     font-weight: 700;
-    src: local("Open Sans Bold"), local("OpenSans-Bold"),
-        url(fonts/open-sans-bold.woff2) format("woff2"),
-        url(fonts/open-sans-bold.woff) format("woff");
+    src: local("Inter Bold"), url(fonts/Inter-Bold.woff2) format("woff2"),
+        url(fonts/Inter-Bold.woff) format("woff");
 }
 
-.page > header .package-title,
-.siteNav-off .page > header .package-title,
+@font-face {
+    font-family: "Inter";
+    font-style: italic;
+    font-weight: 700;
+    src: local("Inter Bold Italic"),
+        url(fonts/Inter-BoldItalic.woff2) format("woff2"),
+        url(fonts/Inter-BoldItalic.woff) format("woff");
+}
+
+.page-title {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.exe-scorm .page header .package-title,
 .exe-single-page .package-header h1 {
-    width: calc(100% - 470px);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    width: 100%;
 }
 
-.exe-teacher-mode-toggler .page > header .package-title,
-.exe-teacher-mode-toggler.siteNav-off .page > header .package-title {
-    width: calc(100% - 550px);
+.package-header:has(.package-subtitle) .package-title,
+.main-header:has(.package-subtitle) .package-title {
+    position: relative;
+    top: -10px;
+}
+
+.package-subtitle {
+    width: 100%;
+    position: absolute;
+    left: 30px;
+    bottom: -.2em;
+    font-size: .9em;
+    color: #FFF;
+}
+
+.exe-web-site .package-subtitle {
+    left: 80px;
 }
 
 main header:not(#head) {
@@ -49,65 +80,42 @@ main header:not(#head) {
 .exe-ims .siteNav-off .page > header .package-title,
 .exe-epub .page > header .package-title,
 .exe-epub .siteNav-off .page > header .package-title,
-.exe-ims .page > header .package-title,
-.exe-single-page .package-header h1 {
+.exe-ims .page > header .package-title {
     width: 100%;
 }
 
-.package-subtitle {
-    width: 100%;
-    position: absolute;
-    left: 32px;
-    bottom: -.2em;
-    font-size: .9em;
-    color: #777;
-}
-
-.exe-web-site .package-subtitle {
-    max-width: 70%;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-@media (max-width: 750px) {
-    .package-subtitle {
-        font-size: 1em;
-    }
-}
-
-body:has(.package-subtitle) .package-title,
-body.exe-single-page:has(.package-subtitle) .package-node h1 {
-    position:relative;
-    top: -.33em;
+.exe-scorm .page > header,
+.exe-epub .page > header,
+.exe-ims .page > header {
+    display: block !important;
 }
 
 .page > header {
     position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
+    top: 4px;
+    right: 4px;
+    left: 4px;
     z-index: 400;
-    height: 100px;
+    height: 82px;
     display: flex !important;
     align-items: center;
-    background-color: #fff;
-    /* background:#fff url(img/logo.png) no-repeat 32px 15px/ 132px; */
-    border-bottom: 1px solid #ffcc00;
+    background: #1c1c1c;
+    border-radius: 12px;
 }
 
-.page-title {
-    font-weight: bold;
-}
-
-.exe-single-page .page-title {
-    margin-top: 20px;
-}
-
-.page > header .package-title {
-    padding-left: 32px;
-    color: #282573;
+.page > header .package-title,
+.siteNav-off .page > header .package-title,
+.exe-single-page .package-header h1 {
+    padding-left: 80px;
+    width: calc(100% - 470px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
     margin: 0;
+}
+.exe-single-page .package-header h1 {
+    padding-left: 30px;
 }
 
 body.exe-export {
@@ -118,55 +126,81 @@ body.exe-web-site {
     padding: 0;
 }
 
-.exe-web-site .package-header {
-    width: 100%;
-}
-
 body.exe-scorm .package-title,
 body.exe-ims .package-title,
 body.exe-epub .package-title{
     position: absolute;
-    top: 20px;
+    top: 15px;
     left: 0;
     font-weight: normal;
     font-size: .95em;
-    color: #777;
+    color: #DDD;
+    padding-left: 32px;
+}
+
+.exe-web-site .package-header {
+    width: 100%;
 }
 
 body.exe-scorm:has(.package-subtitle) .page-title,
 body.exe-ims:has(.package-subtitle) .page-title,
 body.exe-epub:has(.package-subtitle) .page-title{
     margin-top: 30px;
+    color: #fff;
 }
 
 body.exe-scorm .page-counter,
 body.exe-ims .page-counter,
 body.exe-epub .page-counter{
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 32px;
 }
 
 body.exe-scorm #teacher-mode-toggler-wrapper,
 body.exe-ims #teacher-mode-toggler-wrapper,
 body.exe-epub #teacher-mode-toggler-wrapper{
     position: absolute;
-    top: 30px;
+    top: 20px;
     right: 20px;
 }
 
+body.exe-single-page #teacher-mode-toggler-wrapper {
+    position: fixed;
+    top: 0;
+    right:20px;
+    z-index: 1000;
+}
+
+body.exe-scorm .package-title,
+body.exe-ims .package-title,
+body.exe-epub .package-title {
+    top: 15px !important;
+}
+body.exe-scorm:has(.package-subtitle) .package-title,
+body.exe-scorm:has(.package-subtitle) .package-title,
+body.exe-scorm:has(.package-subtitle) .package-title {
+    top: 10px !important;
+}
 body.exe-scorm .package-subtitle,
 body.exe-ims .package-subtitle,
 body.exe-epub .package-subtitle {
-    position: absolute;
-    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-    clip: rect(1px, 1px, 1px, 1px);
+    top: 28px;
+    font-size: .8em;
+    left: 32px;
 }
-
 body.exe-scorm .page-title,
 body.exe-ims .page-title,
 body.exe-epub .page-title {
     padding: 0 32px;
+    position: absolute;
+    bottom: 5px;
+    color: #FFF;
+}
+body.exe-scorm:has(.package-subtitle) .page-title,
+body.exe-scorm:has(.package-subtitle) .page-title,
+body.exe-scorm:has(.package-subtitle) .page-title {
+    bottom: 0;
 }
 
 @media (max-width: 750px) {
@@ -180,37 +214,42 @@ body.exe-epub .page-title {
     body.exe-epub .page > header .package-title {
         padding-left: 24px;
     }
+    body.exe-scorm .package-subtitle,
+    body.exe-ims .package-subtitle,
+    body.exe-epub .package-subtitle {
+        left: 24px;
+    }
 }
 
 .exe-content a {
-    color: #0d77d1;
+    color: #00758f;
 }
 .exe-content a:hover,
 .exe-content a:focus {
-    color: #0a60ab;
+    color: #005771;
     text-decoration: none;
 }
 
 /* Effects */
 .exe-accordion .fx-accordion-title, 
 .fx-pagination .fx-current a {
-    background-color:#1B1866;
+    background-color:#005771;
 }
 .exe-fx a{
-    color: #423F8D;
+    color: #1A718B;
 }
 .exe-fx a:hover,
 .exe-fx a:focus {
-    color: #5B58A6;
+    color: #338AA4;
 }
 
 .exe-download-package-link a {
-    background: #282573;
+    background: #00758f;
     color: #fff;
 }
 
 .exe-download-package-link a:hover {
-    background-color: #0f0b67;
+    background-color: #005771;
     color: #fff;
     text-decoration: none;
 }
@@ -223,9 +262,10 @@ body.exe-epub .page-title {
     display: block;
 }
 
-body.exe-export,
-.exe-content {
-    font-family: "Open Sans";
+.exe-content,
+body.exe-export {
+    font-family: "Inter";
+    font-weight: 400;
     color: #333;
     background-color: #f4f4f4;
 }
@@ -242,23 +282,12 @@ body.exe-export,
     display: none;
 }
 
-.exe-content .package-title {
-    color: #333333;
-    font-size: 1.7rem;
-    text-align: left;
-    font-weight: 700;
-}
-
 .exe-content .package-title,
 .exe-single-page .package-header h1 {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     text-align: left;
     font-weight: 700;
-    color: #282573;
-}
-
-.exe-single-page .package-header > h1 {
-    padding-left: 32px !important;
+    color: #fff;
 }
 
 .exe-single-page .package-node {
@@ -266,12 +295,21 @@ body.exe-export,
 }
 
 .exe-content .box {
-    margin: 32px 0;
+    margin: 35px 0;
     border: none;
+}
+
+.exe-web-site .exe-content .box {
+    margin: 40px 0;
 }
 
 .exe-content .box-head {
     border-bottom: 0;
+    margin-bottom: 16px !important;
+}
+
+.exe-content .box-head + .box-content {
+    padding-top: 1em;
 }
 
 #node-content-container.exe-content .box {
@@ -287,7 +325,7 @@ body.exe-export,
 }
 
 .exe-content .box-head .box-title {
-    color: #282573;
+    color: #1c1c1c;
     font-size: 1.75rem !important;
     font-weight: 700;
 }
@@ -303,11 +341,7 @@ body.exe-export,
 .exe-export .exe-content {
     max-width: 1280px;
     padding: 0 90px;
-    margin: 0 auto 0 auto;
-}
-
-.exe-web-site .page-content {
-    margin: 40px auto 0 auto;
+    margin: 0 auto;
 }
 
 .exe-web-site .exe-content {
@@ -349,19 +383,20 @@ body.exe-export.exe-epub .exe-content {
 /* siteNav */
 #siteNav {
     float: left;
-    border-right: 1px solid #f0f0f0;
     width: 300px;
-    padding-top: 200px;
+    padding-top: 20px;
     padding-left: 8px;
+    padding-bottom: 20px;
     background-color: #ffffff;
-    height: 100vh;
+    height: calc(100vh - 98px);
     z-index: 1;
-    overflow: auto;
     scrollbar-width: none;
     transition: left 0.3s ease;
-    left: 0;
-    top: 100px;
     overflow: visible;
+    margin-top: 94px;
+    margin-left: 4px;
+    margin-bottom: 4px;
+    border-radius: 12px;
 }
 
 #siteNav::-webkit-scrollbar {
@@ -369,7 +404,7 @@ body.exe-export.exe-epub .exe-content {
 }
 
 #siteNav > ul {
-    max-height: calc(100vh - 230px);
+    max-height: 100%;
     overflow-y: auto;
     margin: 0;
     padding: 0;
@@ -427,8 +462,8 @@ body.siteNav-off #siteFooter {
 }
 
 #siteNav a.active {
-    color: #282573;
-    background-color: #ffcc00;
+    color: #fff;
+    background-color: #00758f;
     font-weight: bold;
     margin-bottom: 4px;
 }
@@ -441,17 +476,17 @@ body.siteNav-off #siteFooter {
 }
 
 #siteNav a.highlighted-link.active {
-    background: #ffcc00 url(img/book_color.svg) no-repeat 8px center !important;
-    color: #282573;
+    background: #00758f url(img/book_color.svg) no-repeat 8px center !important;
+    color: #fff;
 }
 
 #siteNav a.highlighted-link:hover {
-    background: #ffd940 url(img/book_color.svg) no-repeat 8px center !important;
-    color: #282573;
+    background: #005771 url(img/book_color.svg) no-repeat 8px center !important;
+    color: #fff;
 }
 #siteNav a.highlighted-link:focus {
-    background: #ffcc00 url(img/book_color.svg) no-repeat 8px center !important;
-    color: #282573;
+    background: #00758f url(img/book_color.svg) no-repeat 8px center !important;
+    color: #fff;
 }
 
 #siteNav a.highlighted-link {
@@ -460,22 +495,23 @@ body.siteNav-off #siteFooter {
 
 #siteNav a.highlighted-link:hover,
 #siteNav a.highlighted-link:focus {
-    background: #ffd940;
+    background: #005771;
 }
 
 #siteNav a:hover {
-    background: #ffd940;
+    background: #005771;
     text-decoration: none;
+    color: #fff;
 }
 
 #siteNav ul ul a {
     padding-left: 35px;
     font-size: 0.95em;
-    background-color: #fff1bb;
+    background-color: #f2f2f7;
 }
 
 .current-page-parent a {
-    background-color: #fff1bb;
+    background-color: #f2f2f7;
     margin-bottom: 4px;
 }
 
@@ -492,39 +528,42 @@ body.siteNav-off #siteFooter {
     background: #fff url(img/arrow_down.svg) no-repeat right 16px center / 22px !important;
 }
 .active .active.daddy {
-    background: #ffd940 url(img/arrow.svg) no-repeat right 16px center / 22px !important;
-}
-.active .daddy {
-    background: #fff1bb url(img/arrow_down.svg) no-repeat right 16px center /
+    background: #005771 url(img/arrow_up_white.svg) no-repeat right 16px center /
         22px !important;
 }
-#siteNav .current-page-parent > .daddy {
-    background: #fff1bb url(img/arrow.svg) no-repeat right 16px center / 22px !important;
+.active .daddy {
+    background: #f2f2f7 url(img/arrow_down.svg) no-repeat right 16px center /
+        22px !important;
 }
 .current-page-parent .daddy {
-    background: #fff1bb url(img/arrow_down.svg) no-repeat right 16px center /
+    background: #f2f2f7 url(img/arrow_down.svg) no-repeat right 16px center /
         22px !important;
 }
 .daddy:hover {
-    background: #ffd940 url(img/arrow_down.svg) no-repeat right 16px center /
-        22px !important;
+    background: #005771 url(img/arrow_down_white.svg) no-repeat right 16px
+        center / 22px !important;
+}
+.current-page-parent .daddy:hover {
+    background: #005771 url(img/arrow_down_white.svg) no-repeat right 16px
+        center / 22px !important;
 }
 .active.daddy:hover {
-    background: #ffd940 url(img/arrow.svg) no-repeat right 16px center / 22px !important;
+    background: #005771 url(img/arrow_up_white.svg) no-repeat right 16px center /
+        22px !important;
 }
 
 /* pagination */
 .nav-buttons .nav-button,
 button.toggler {
     position: fixed;
-    top: 18px;
+    top: 15px;
     right: 65px;
     display: inline-block;
     width: auto;
     height: auto;
     background-image: url(img/arrow_back.svg);
     background-size: 24px;
-    background-color: #282573;
+    background-color: #00758f;
     background-repeat: no-repeat;
     border-radius: 8px;
     z-index: 999;
@@ -543,7 +582,7 @@ button.toggler {
 .nav-buttons .nav-button-left {
     background-position: left 14px center;
     padding-left: 48px;
-    right: 180px;
+    right: 166px;
 }
 .nav-buttons .nav-button-right {
     background-position: right 14px center;
@@ -553,9 +592,9 @@ button.toggler {
 }
 
 button#siteNavToggler {
-    left: 10px;
-    top: 130px;
-    background: #fff url(img/menu_open.svg) no-repeat 12px / 32px;
+    left: 14px;
+    top: 17px;
+    background: #fff url(img/menu_open.svg) no-repeat center center / 32px;
     width: 40px;
     height: 40px;
     border-radius: 8px;
@@ -565,23 +604,19 @@ button#siteNavToggler {
 #siteNavToggler:hover {
     background-color: #f4f4f4;
 }
-button#siteNavToggler span {
-    display: none;
-}
+button#siteNavToggler span,
 .siteNav-off button#siteNavToggler span {
-    display: inline;
+    display: none;
 }
 
 body.siteNav-off button#siteNavToggler {
-    left: 0;
-    top: 130px;
-    padding: 8px 8px 8px 19px;
-    width: 100px;
-    border-radius: 0 8px 8px 0;
-    background: #282573 url(img/menu_closed.svg) no-repeat 22px / 32px;
+    left: 14px;
+    top: 17px;
+    background: url(img/menu_closed.svg) no-repeat center center / 32px;
 }
+
 body.siteNav-off button#siteNavToggler:hover {
-    background-color: #191748;
+    background-color: #363636;
 }
 
 #siteNavToggler .sr-av {
@@ -597,8 +632,8 @@ body.siteNav-off button#siteNavToggler:hover {
 .nav-buttons a:focus,
 button.toggler:hover,
 button.toggler:focus {
-    background-color: #191748;
-    border-color: #191748;
+    background-color: #005771;
+    border-color: #005771;
     color: #fff;
     text-decoration: none;
 }
@@ -635,7 +670,7 @@ button.toggler:focus {
     position: absolute;
     top: 20px;
     right: 20px;
-    background-color: #ffcc00;
+
     transition: transform 0.2s ease-in-out;
 }
 .exe-export .box-head:hover .box-toggle,
@@ -678,10 +713,6 @@ button.toggler:focus {
 
 .exe-export .box.no-header.minimized .box-head {
     border-color: #fff;
-}
-
-.exe-export .box .box-content {
-    padding-top: 20px;
 }
 
 .exe-export .box.no-header .box-content {
@@ -750,12 +781,13 @@ button.toggler:focus {
 #siteUserFooter {
     margin-bottom: 20px;
 }
+
 /* iDevice buttons */
 .exe-content .iDevice_buttons input,
 .exe-content .iDevice_buttons button {
-    background: #fff;
-    color: #555;
-    border: 1px solid #ccc;
+    background: #1a8fa9;
+    color: #fff;
+    border: 1px solid #1a8fa9;
     padding: 4px 10px;
     border-radius: 4px;
     transition: 0.5s ease;
@@ -764,9 +796,8 @@ button.toggler:focus {
 .exe-content .iDevice_buttons input:focus,
 .exe-content .iDevice_buttons button:hover,
 .exe-content .iDevice_buttons button:focus {
-    box-shadow: 2px 2px 4px #dbdbdb;
-    color: #000;
-    border-color: #bbb;
+    background: #005771;
+    border-color: #005771;
 }
 
 /* Page counter */
@@ -774,24 +805,22 @@ button.toggler:focus {
     text-align: right;
     margin: 0 0 0.5em 0;
     font-size: 0.9em;
-    color: #777;
+    color: #fff;
     font-weight: 300;
-    background: #fff;
 }
 
 .exe-web-site .page-counter {
     position: fixed;
-    top: 38px;
+
     right: 346px;
     margin: 0;
     padding: 0;
     font-size: 0.9em;
-    color: #777;
+    color: #fff;
     text-align: right;
 }
-
 .exe-teacher-mode-toggler.exe-web-site .page-counter {
-    right: 450px;
+    right: 400px;
 }
 
 /* Search bar */
@@ -811,15 +840,16 @@ body.exe-search-on button#searchBarTogger {
 }
 button#searchBarTogger {
     right: auto;
-    left: 220px;
+    left: 304px;
     top: 136px;
-    background: #282573 url(img/search.svg) no-repeat center / 32px;
+    background: #00758f url(img/search.svg) no-repeat center / 32px;
     width: 48px;
     height: 48px;
     display: none;
+    border-radius: 0 8px 8px 0;
 }
 body.siteNav-off button#searchBarTogger {
-    top: 220px;
+    top: 136px;
     left: 0px;
     padding-left: 50px;
     border-radius: 0 8px 8px 0;
@@ -836,7 +866,7 @@ body.siteNav-off button#searchBarTogger {
 }
 #exe-client-search-submit {
     text-indent: -999em;
-    background: #ffcc00 url(img/icons.png) no-repeat -41px -1px;
+    background: #00758f url(img/icons.png) no-repeat -41px -1px;
     background-size: auto 40px;
     width: 38px;
     height: 38px;
@@ -859,7 +889,7 @@ body.siteNav-off button#searchBarTogger {
 }
 #exe-client-search-submit:hover,
 #exe-client-search-submit:focus {
-    background-color: #ffcc00;
+    background-color: #00758f;
 }
 #exe-client-search-results-list ul,
 #exe-client-search-results-list li {
@@ -879,8 +909,8 @@ body.siteNav-off button#searchBarTogger {
 #teacher-mode-toggler-wrapper {
     float: none;
     position: absolute;
-    top: 18px;
-    right: 335px;
+    top: 9px;
+    right: 300px;
     display: flex;
     align-items: center;
     padding: 4px 36px 4px 4px;
@@ -923,9 +953,6 @@ body.siteNav-off button#searchBarTogger {
     .siteNav-off button#siteNavToggler span {
         display: none;
     }
-    body.siteNav-off button#siteNavToggler {
-        width: 56px;
-    }
 }
 
 @media (max-width: 1200px) {
@@ -946,29 +973,34 @@ body.siteNav-off button#searchBarTogger {
     .nav-buttons .nav-button span {
         display: none;
     }
+
     .nav-buttons .nav-button {
         height: 60px;
     }
+
     .nav-buttons .nav-button-right {
         right: 20px;
         background-position: center;
     }
+
     .nav-buttons .nav-button-left {
         right: 100px;
         background-position: center;
     }
+
     .page > header .package-title,
     .siteNav-off .page > header .package-title {
-        width: calc(100% - 230px);
+        width: calc(100% - 240px);
     }
-    .exe-teacher-mode-toggler.exe-web-site .page-counter,
     .exe-web-site .page-counter {
-        right: 193px;
-        top: 12px;
+        left: auto;
+        right: 80px;
     }
     .page-counter-label {
         display: none;
     }
+
+    /* Form & pagination*/
     #teacher-mode-toggler-wrapper {
         right: 182px;
     }
@@ -978,18 +1010,26 @@ body.siteNav-off button#searchBarTogger {
     #teacher-mode-toggler-wrapper .form-check-input {
         margin: 0 !important;
     }
-    .exe-teacher-mode-toggler .page > header .package-title,
-    .exe-teacher-mode-toggler.siteNav-off .page > header .package-title {
-        width: calc(100% - 320px);
+    .exe-web-site .page-counter {
+        right: 180px;
+    }
+    .exe-teacher-mode-toggler.exe-web-site .page-counter {
+        right: 290px;
+    }
+    .exe-web-site.exe-teacher-mode-toggler .page > header .package-title,
+    .exe-web-site.exe-teacher-mode-toggler.siteNav-off .page > header .package-title {
+        width: calc(100% - 330px);
     }
 }
 
+/* Responsive design */
 @media (max-width: 750px) {
     .exe-web-site .page-content {
         padding: 0 20px;
     }
-    .exe-web-site .page-content {
-        margin: 0;
+
+    .exe-web-site .package-subtitle {
+        left: 32px;
     }
 
     #sidebar-nav {
@@ -1000,13 +1040,12 @@ body.siteNav-off button#searchBarTogger {
 
     #siteNav {
         float: none;
-        border-right: 1px solid #f0f0f0;
         width: 100%;
-        padding-top: 200px;
-        padding-left: 8px;
+        margin: 0;
         background-color: #ffffff;
         height: auto;
         padding: 16px 16px 8px 16px;
+        border-radius: 0;
     }
     #siteNav a {
         width: 100%;
@@ -1022,7 +1061,7 @@ body.siteNav-off button#searchBarTogger {
         padding: 16px;
         height: 20px;
         border: 1px solid #ebe9e9;
-        background: #ffffff url(img/menu_open.svg) no-repeat 12px center / 32px;
+        background: #fff url(img/menu_open.svg) no-repeat 12px center / 32px;
         font-weight: 700;
         position: absolute;
         z-index: 0;
@@ -1051,7 +1090,7 @@ body.siteNav-off button#searchBarTogger {
         width: auto;
         padding: 16px;
         height: 20px;
-        background: #282573 url(img/menu_closed.svg) no-repeat 12px / 32px;
+        background: #00758f url(img/menu_closed.svg) no-repeat 12px / 32px;
         font-weight: 700;
     }
 
@@ -1065,7 +1104,7 @@ body.siteNav-off button#searchBarTogger {
     }
 
     body.siteNav-off button#siteNavToggler:hover {
-        background-color: #191748;
+        background-color: #005771;
     }
 
     body.siteNav-off main.page,
@@ -1077,12 +1116,14 @@ body.siteNav-off button#searchBarTogger {
         margin-top: 20px;
     }
 
-    /* .page > header, .siteNav-off .page > header{
-        background: #fff url(img/logo_responsive.png) no-repeat 32px 15px/ 32px;
-    } */
+    .page > header,
+    .siteNav-off .page > header {
+        background: #1c1c1c;
+    }
+
     .page > header .package-title,
     .siteNav-off .page > header .package-title {
-        width: calc(100% - 180px);
+        width: calc(100% - 210px);
     }
     #siteNavToggler .sr-av {
         color: #000;
@@ -1108,7 +1149,7 @@ body.siteNav-off button#searchBarTogger {
         margin-top: 1em;
     }
     #exe-client-search-submit {
-        background: #ffcc00 no-repeat url(img/search.svg) center / 24px;
+        background: #00758f no-repeat url(img/search.svg) center / 24px;
     }
     #exe-client-search-reset.visible {
         background: #ffffff url(img/menu_open.svg) no-repeat 12px center / 24px;
@@ -1127,16 +1168,26 @@ body.siteNav-off button#searchBarTogger {
     #packageLicense {
         margin: 0 0 3em 0;
     }
+    .page > header .package-title,
+    .siteNav-off .page > header .package-title,
+    .exe-single-page .package-header h1 {
+        padding-left: 32px;
+    }
 }
 
 @media (max-width: 650px) {
     html {
         font-size: 0.85rem !important;
     }
+
+    .page > header,
+    .siteNav-off .page > header {
+        background: #1c1c1c;
+    }
     .page > header .package-title,
     .siteNav-off .page > header .package-title {
-        padding-left: 32px;
-        width: calc(100% - 140px);
+        padding-left: 20px;
+        width: calc(100% - 155px);
         overflow: hidden;
         text-overflow: ellipsis;
         height: auto;
@@ -1145,6 +1196,13 @@ body.siteNav-off button#searchBarTogger {
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
+    }
+    .main-header:has(.package-subtitle) .package-title {
+        font-size: 1.2em;
+        line-height: 1.1em;
+    }
+    .exe-web-site .package-subtitle {
+        left: 20px;
     }
     .nav-buttons .nav-button-left,
     .nav-buttons .nav-button-right {
@@ -1166,7 +1224,7 @@ body.siteNav-off button#searchBarTogger {
         padding-left: 24px;
     }
     body.siteNav-off button#siteNavToggler {
-        background: #282573 url(img/menu_closed.svg) no-repeat 12px / 24px;
+        background: #00758f url(img/menu_closed.svg) no-repeat 12px / 24px;
     }
     .box-title {
         width: calc(100% - 32px);
@@ -1178,7 +1236,7 @@ body.siteNav-off button#searchBarTogger {
         height: 32px;
     }
     .exe-single-page .package-header h1 {
-        padding-left: 60px;
+        padding-left: 32px;
         overflow: hidden;
         text-overflow: ellipsis;
         word-wrap: break-word;
@@ -1189,12 +1247,8 @@ body.siteNav-off button#searchBarTogger {
         height: auto;
         white-space: normal;
     }
-    .exe-web-site .page-content,
-    #exe-client-search,
-    .exe-web-site main > header,
-    .exe-web-site #siteFooterContent {
-        padding: 0 30px;
-    }
+
+    /* Teacher mode*/
     #teacher-mode-toggler-wrapper {
         right: 120px;
     }
@@ -1205,20 +1259,15 @@ body.siteNav-off button#searchBarTogger {
     #teacher-mode-toggler-wrapper .form-check-input:focus {
         background-size: 16px;
     }
-    .exe-teacher-mode-toggler .page > header .package-title,
-    .exe-teacher-mode-toggler.siteNav-off .page > header .package-title {
-        width: calc(100% - 180px);
+    .exe-web-site.exe-teacher-mode-toggler .page > header .package-title,
+    .exe-web-site.exe-teacher-mode-toggler.siteNav-off .page > header .package-title {
+        width: calc(100% - 260px);
     }
-    .exe-teacher-mode-toggler.exe-web-site .page-counter,
     .exe-web-site .page-counter {
-        right: 140px;
+        right: 127px;
     }
-    #teacher-mode-toggler-wrapper {
-        right: 130px;
-        z-index: 999;
-    }
-    .page-title {
-        margin-top: 32px;
+    .exe-teacher-mode-toggler.exe-web-site .page-counter {
+        right: 210px;
     }
 }
 
@@ -1263,5 +1312,9 @@ table {
     }
     .exe-web-site main.page {
         padding-top: 1em;
+    }
+    /* Single page */
+    body.exe-single-page #teacher-mode-toggler-wrapper {
+        display: none;
     }
 }
